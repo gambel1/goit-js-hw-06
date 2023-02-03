@@ -1,10 +1,12 @@
 const inputEl = document.querySelector('#validation-input');
 
 inputEl.addEventListener ('blur', onInputBlur => {
-if (inputEl.value.length === Number(inputEl.dataset.length)) {
-        inputEl.classList.remove("invalid");
-        return inputEl.classList.add("valid");
-    }
-    return inputEl.classList.add("invalid");
+    inputEl.classList.remove("valid", "invalid");
+
+    const inputColorEl = (inputEl.value.length === Number(inputEl.dataset.length)/*6*/)
+           ? inputEl.classList.add("valid")
+        : inputEl.classList.add("invalid");
+    return inputEl;
 });
+
 

@@ -7,20 +7,25 @@ function onFormSubmit(event) {
     event.preventDefault();
 
     inputs.forEach(input => {
-    if (input.value.trim() === '') {
-        alert("Заполните все поля!")
-    }
+        if (input.value.trim() === '') {
+            alert("Заполните все поля!")
+        }
+        
+        const formElements = event.currentTarget.elements;
+        
+        const mail = formElements.email.value;
+        const password = formElements.password.value;
+        
+        console.log(mail, password);
 });
-    console.log('страница теперь не перезагружается');
+   
+//     const formData = new FormData(event.currentTarget);
+//     console.log(formData);
 
-    const formData = new FormData(event.currentTarget);
-    console.log(formData);
-
-    formData.forEach((value, name) => {
-        console.log('onFormSubmit -> name', name);
-        console.log('onFormSubmit -> value', value);
-})
-
+//     formData.forEach((value, name) => {
+//         console.log('onFormSubmit -> name', name);
+//         console.log('onFormSubmit -> value', value);
+// })
 
 form.reset();
 };
@@ -68,7 +73,3 @@ form.reset();
 
 
 
-// formData.forEach((value, name) => {
-//     console.log(`name`, name );
-//     console.log(`value`, value);
-//   });

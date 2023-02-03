@@ -8,29 +8,32 @@ const destroyRemoveButtonEl = document.querySelector('[data-destroy]');
 const boxesEl = document.querySelector('#boxes');
 
 const createBoxes = ((amount) => {
-  amount = inputEl.value;
   const numberBox = [];
 
-  const boxEl = amount.reduce((initialValue, element) => {
-    const newBoxEl = document.createElement('div');
+  amount = Number(inputEl.value);
+  numberBox.length = amount;
+  numberBox.fill("");
 
-    newBoxEl.style.width = 30 + element * 10 + "px";
-    newBoxEl.style.height = 30 + element * 10 + "px";
-    newBoxEl.style.backgroundColor = getRandomHexColor();
-
-    numberBox.push(newBoxEl);
-
-    boxesEl.append(...numberBox);
-
-  }, 0);
+  numberBox.map((element, index) => {
+    numberBox.forEach((el) => {
+      element = document.createElement('div');
+      element.style.width = 30 + index * 10 + "px";
+      element.style.height = 30 + index * 10 + "px";
+      element.style.backgroundColor = getRandomHexColor();
+ });
+      numberBox.push(element);
+});
+  return boxesEl.append(...numberBox);
+   
 });
 
-const destroyBoxes = (event) => (boxesEl.innerHTML = '');
-
-destroyRemoveButtonEl.addEventListener('click', destroyBoxes);
-
+const destroyBoxes = ((event) => {
+  boxesEl.innerHTML = '';
+  inputEl.innerHTML = '';
+});
 
 createButtonEl.addEventListener('click', createBoxes);
 destroyRemoveButtonEl.addEventListener('click', createBoxes);
+
 
 

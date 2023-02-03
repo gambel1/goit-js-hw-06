@@ -12,7 +12,7 @@ const bcgEl = document.querySelector('.color');
 console.log(bcgEl);
 
 const buttonClickHandler = () => {
-  let currentColor = getRandomHexColor();
+  const currentColor = getRandomHexColor();
   bodyEl.style.backgroundColor = currentColor;
   bcgEl.textContent = currentColor;
 };
